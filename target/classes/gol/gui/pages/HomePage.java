@@ -48,10 +48,6 @@ public class HomePage extends Page implements MouseListener {
 					20, 40);
 			g.drawString(gol.getCount() + " of " + gol.getTargetCount(), 20, 70);
 		}
-
-		public boolean equals(Object other) {
-			return ((GolPanel) other).gol.getID() == gol.getID();
-		}
 	}
 
 	public static final long serialVersionUID = 32421;
@@ -60,14 +56,9 @@ public class HomePage extends Page implements MouseListener {
 	private GolPanel[] golPanels;
 	private Color golColor = new Color(138, 230, 138);
 
-	public HomePage() {
-		setBackground(backgroundColor);
-	}
-
 	public void loadPage() {
 		gols = dataManager.getData();
 		golPanels = new GolPanel[gols.size()];
-		System.out.println("Loading home");
 		for (int i = 0; i < golPanels.length; i++) {
 			golPanels[i] = new GolPanel(gols.get(i));
 			golPanels[i].addMouseListener(this);
@@ -87,7 +78,7 @@ public class HomePage extends Page implements MouseListener {
 	}
 
 	public void mouseClicked(MouseEvent e) {
-		nextPage = new GolPage(((GolPanel)e.getSource()).gol);
+		nextPage = new GolPage(((GolPanel) e.getSource()).gol);
 	}
 
 	public void mousePressed(MouseEvent e) {}

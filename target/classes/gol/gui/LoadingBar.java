@@ -30,9 +30,12 @@ public class LoadingBar extends JPanel {
 	public void paint(Graphics g) {
 		super.paint(g);
 		g.setColor(bgColor);
-		System.out.println(getWidth());
 		g.fillRoundRect(0, 0, getWidth(), getHeight(), 10, 10);
 		g.setColor(fgColor);
-		g.fillRoundRect(0, 0, (int)(getWidth() * progress / target), getHeight(), 10, 10);
+		if (progress > target) {
+			g.fillRoundRect(0, 0, getWidth(), getHeight(), 10, 10);
+		} else {
+			g.fillRoundRect(0, 0, (int)(getWidth() * progress / target), getHeight(), 10, 10);
+		}
 	}
 }
